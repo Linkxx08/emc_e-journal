@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -22,7 +22,15 @@
   <body>
     <!-- Barre supérieure -->
     <header class="container header" role="banner">
-      <a class="brand" href="/">Journal du lycée</a>
+      <a class="brand" href="/">
+        <img
+          src="/static/uploads/logoptitvilar3.png"
+          alt="Le P'tit Vilar"
+          class="logo"
+          width="80"
+          height="80"
+        />
+      </a>
 
       <nav class="nav" aria-label="Navigation principale">
         <a
@@ -133,7 +141,13 @@
         method="post"
         enctype="multipart/form-data"
       >
-        <input type="text" name="title" placeholder="Titre" required value="{{ article.title }}"/>
+        <input
+          type="text"
+          name="title"
+          placeholder="Titre"
+          required
+          value="{{ article.title }}"
+        />
 
         <input
           type="text"
@@ -146,19 +160,28 @@
         />
 
         <label for="category">Catégorie :</label>
-          <select name="category" id="category" required>
-              {% for cat in categories %}
-                <option value="{{ cat }}" {% if cat == selected_category %}selected{% endif %}>{{ cat }}</option>
-              {% endfor %}
-          </select>
+        <select name="category" id="category" required>
+          {% for cat in categories %}
+          <option
+            value="{{ cat }}"
+            {%
+            if
+            cat=""
+            ="selected_category"
+            %}selected{%
+            endif
+            %}
+          >
+            {{ cat }}
+          </option>
+          {% endfor %}
+        </select>
 
         <label for="content">Contenu de l’article :</label>
         <!-- ✅ Zone Markdown -->
-        <textarea
-          class="markdown-editor"
-          id="markdown-editor"
-          name="content"
-        >{{ article.content }}</textarea>
+        <textarea class="markdown-editor" id="markdown-editor" name="content">
+{{ article.content }}</textarea
+        >
 
         <label for="image">Modifier l'image :</label>
         <input type="file" name="image" id="image" />
@@ -170,7 +193,9 @@
     </div>
 
     <footer class="container footer" role="contentinfo">
-      <div>© Journal du lycée Jean VILAR — Tous droits réservés</div>
+      <div>
+        © Journal de la classe d'EMC de 2°5 2025/2026 — Tous droits réservés
+      </div>
       <div class="by">© Made by Team LogicPulse</div>
     </footer>
 

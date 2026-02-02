@@ -85,26 +85,6 @@
           </svg>
         </a>
 
-        <a
-        class="nav-link {% if request.url.path|startswith('/articles/16') %}is-active{% endif %}"
-        href="/articles/16"
-      >
-        A propos de nous
-        <svg
-          class="nav-ring"
-          aria-hidden="true"
-          focusable="false"
-          viewBox="0 0 100 40"
-          preserveAspectRatio="none"
-        >
-          <path
-            class="nav-ring__stroke"
-            pathLength="100"
-            d="M50,1.5 H78.5 A18.5,18.5 0 0 1 78.5,38.5 H21.5 A18.5,18.5 0 0 1 21.5,1.5 H50 Z"
-          />
-        </svg>
-      </a>
-
         {% if request.state.user %}
         <a
           class="nav-link {% if request.url.path|startswith('/admin') %}is-active{% endif %}"
@@ -300,7 +280,7 @@
     </section>
 
     <footer class="container footer" role="contentinfo">
-      <div>© Journal du lycée Jean VILAR — Tous droits réservés</div>
+      <div>© Journal de la classe d'EMC de 2°5 2025/2026 — Tous droits réservés</div>
       <div class="by">© Made by Team LogicPulse</div>
     </footer>
     <script>
