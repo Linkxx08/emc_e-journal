@@ -160,18 +160,10 @@
         />
 
         <label for="category">Catégorie :</label>
+        {% set current_category = selected_category or article.category %}
         <select name="category" id="category" required>
           {% for cat in categories %}
-          <option
-            value="{{ cat }}"
-            {%
-            if
-            cat=""
-            ="selected_category"
-            %}selected{%
-            endif
-            %}
-          >
+          <option value="{{ cat }}" {% if cat == current_category %}selected{% endif %}>
             {{ cat }}
           </option>
           {% endfor %}
