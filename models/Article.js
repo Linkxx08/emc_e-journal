@@ -18,6 +18,29 @@ class Article {
     `);
   }
 
+  // Ensure DB schema has all expected columns (handles older deployments).
+  static ensureColumns() {
+    const required = {
+      subtitle: 'TEXT',
+      image_url: 'TEXT',
+      category: 'TEXT',
+      featured: 'INTEGER DEFAULT 0',
+      archive: 'INTEGER DEFAULT 0'
+    };
+
+    const columns = db.prepare(`PRAGMA table_info(articles)`).all()
+      .reduce((acc, col) => {
+        acc[col.name] = true;
+        return acc;
+      }, {});
+
+    Object.entries(required).forEach(([name, definition]) => {
+      if (!columns[name]) {
+        db.exec(`ALTER TABLE articles ADD COLUMN ${name} ${definition}`);
+      }
+    });
+  }
+
   static findAll(includeArchived = false) {
     let query = 'SELECT * FROM articles';
     if (!includeArchived) {
@@ -96,6 +119,7 @@ class Article {
 
 // Initialiser la table au chargement
 Article.createTable();
+Article.ensureColumns();
 
 module.exports = Article;
 
