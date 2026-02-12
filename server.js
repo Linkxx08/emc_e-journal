@@ -16,7 +16,7 @@ const categoriesRoutes = require('./routes/categories');
 const formationMdRoutes = require('./routes/formation_md');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3100;
 
 // Configuration du moteur de template Nunjucks (compatible Jinja2)
 const { marked } = require('marked');
